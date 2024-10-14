@@ -7,7 +7,10 @@ const cors = require('cors')
 const xss = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
 
-
+// Swagger
+const swaggerUI = require('swagger-ui-express')
+const YAML = require('yamljs')
+const swaggerDocument = YAML.load('./swagger.yaml')
 
 
 const express = require('express');
@@ -22,6 +25,8 @@ const authenticateUser = require('./middleware/authentication')
 app.use(express.static("public"));
 
 
+// initializing swagger for api documentation 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 // routers
 const authRouter = require('./routes/auth')
