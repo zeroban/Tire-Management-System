@@ -59,9 +59,13 @@ export const handleAddEdit = () => {
                         if (response.status === 200) {
                             // a 200 is expected for a successful update
                             message.textContent = "The tire entry was updated.";
+
+
                         } else {
                             // a 201 is expected for a successful create
                             message.textContent = "The tire entry was created.";
+
+
                         }
 
                         brand.value = "";
@@ -70,6 +74,9 @@ export const handleAddEdit = () => {
                         quantity.value = "";
                         location.value = "";
                         showTires();
+
+
+
                     } else {
                         message.textContent = data.msg;
                     }
@@ -80,7 +87,10 @@ export const handleAddEdit = () => {
                 enableInput(true);
             } else if (e.target === editCancel) {
                 message.textContent = "";
+
                 showTires();
+
+
             }
         }
     });

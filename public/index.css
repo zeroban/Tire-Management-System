@@ -80,6 +80,15 @@ button:hover {
   transform: scale(1.1);
 }
 
+#greeting {
+  float: left;
+  font-size: 32px;
+  color: #333;
+  margin: 20px 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* Still need to work on getting the login section and register section looking nice */
 #email,
 #name,
