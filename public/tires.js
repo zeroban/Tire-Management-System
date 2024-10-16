@@ -1,4 +1,4 @@
-import { inputEnabled, setDiv, message, setToken, token, enableInput, } from "./index.js";
+import { inputEnabled, setDiv, message, setToken, token, enableInput, greeting } from "./index.js";
 import { showLoginRegister } from "./loginRegister.js";
 import { showAddEdit } from "./addEdit.js";
 import { deleteTire } from "./deleteTire.js";
@@ -19,9 +19,10 @@ export const handleTires = () => {
         if (inputEnabled && e.target.nodeName === "BUTTON") {
             if (e.target === addTire) {
                 showAddEdit(null);
+                greeting.textContent = null;
             } else if (e.target === logoff) {
                 setToken(null);
-
+                greeting.textContent = null; // Sets the greeting to null
                 message.textContent = "You have been logged off.";
 
                 tiresTable.replaceChildren([tiresTableHeader]);
@@ -50,6 +51,7 @@ export const showTires = async (page = 1, limit = 5) => {
                 Authorization: `Bearer ${token}`,
             },
         });
+
 
         const data = await response.json();
         let children = [tiresTableHeader];

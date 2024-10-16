@@ -5,6 +5,7 @@ import {
     message,
     enableInput,
     setToken,
+    greeting,
 } from "./index.js";
 import { showLoginRegister } from "./loginRegister.js";
 import { showTires } from "./tires.js";
@@ -39,13 +40,18 @@ export const handleLogin = () => {
 
                     const data = await response.json();
                     if (response.status === 200) {
-                        message.textContent = `Welcome ${data.user.name}!`;
                         setToken(data.token);
 
                         email.value = "";
                         password.value = "";
 
                         showTires();
+
+                        // call the greeting after the showTires() so that it remains displayed all the time. 
+                        greeting.textContent = `${getRandomGreeting()}, ${data.user.name}!`;
+                        message.textContent = null;
+
+
                     } else {
                         message.textContent = data.msg;
                     }
@@ -59,10 +65,36 @@ export const handleLogin = () => {
                 email.value = "";
                 password.value = "";
                 showLoginRegister();
+
             }
         }
     });
 };
+
+// Array of greetings
+const greetings = [
+    "Hello",
+    "Welcome",
+    "Greetings",
+    "Hi",
+    "Good to see you",
+    "Hey there",
+    "Nice to have you here",
+    "Glad you're here",
+    "What's up",
+    "Howdy",
+    "Ahoy",
+    "Salutations",
+    "Bonjour",
+    "Hola",
+    "Good day"
+];
+
+// Function to get a random greeting
+function getRandomGreeting() {
+    const randomIndex = Math.floor(Math.random() * greetings.length);
+    return greetings[randomIndex];
+}
 
 export const showLogin = () => {
     email.value = null;

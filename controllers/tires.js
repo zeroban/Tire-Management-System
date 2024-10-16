@@ -27,6 +27,7 @@ const getAllTires = async (req, res) => {
         currentPage: pageNumber,
         totalPages: Math.ceil(totalTires / limitNumber),
         totalTires
+
     });
 };
 

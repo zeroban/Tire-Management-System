@@ -25,6 +25,7 @@ export const setToken = (value) => {
 };
 
 export let message = null;
+export let greeting = null;
 
 import { showTires, handleTires } from "./tires.js";
 import { showLoginRegister, handleLoginRegister } from "./loginRegister.js";
@@ -35,6 +36,7 @@ import { handleRegister } from "./register.js";
 document.addEventListener("DOMContentLoaded", () => {
     token = localStorage.getItem("token");
     message = document.getElementById("message");
+    greeting = document.getElementById("greeting");
     handleLoginRegister();
     handleLogin();
     handleTires();
