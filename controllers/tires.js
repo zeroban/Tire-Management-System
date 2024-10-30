@@ -3,6 +3,7 @@ const { StatusCodes } = require('http-status-codes')
 const { BadRequestError, NotFoundError } = require('../errors')
 
 
+
 const getAllTires = async (req, res) => {
     // Extract page and limit from query parameters
     const { page = 1, limit = 5 } = req.query;
@@ -13,7 +14,7 @@ const getAllTires = async (req, res) => {
 
     // Fetch tires for the authenticated user with pagination
     const tires = await Tires.find({ createdBy: req.user.userId })
-        .sort('createdAt')
+        .sort('brand')
         .skip(skip)
         .limit(limitNumber);
 
@@ -100,8 +101,26 @@ const deleteTire = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: "The entry was deleted." });
 }
 
+// search tire function
+const searchTires = async (req, res) => {
+    try {
+        const { brand, model, size } = req.query;
+        const searchCriteria = {};
 
+        if (brand) searchCriteria.brand = new RegExp(brand, 'i'); // Regex with i Flag creates a regular expression from the brand input, making it case-insensitive.
+        if (model) searchCriteria.model = new RegExp(model, 'i');
+        if (size) searchCriteria.size = size; // size should always match due to numerical value
 
+        const tires = await Tires.find(searchCriteria);
+        if (tires.length === 0) {
+            return res.status(404).json({ msg: 'No tires found matching the criteria' });
+        }
+        res.status(200).json(tires);
+    } catch (error) {
+        console.error("Error in searchTires:", error); // Log the full error to the console
+        res.status(500).json({ message: 'Error searching for tires', error: error.message });
+    }
+};
 
 module.exports = {
     getAllTires,
@@ -109,6 +128,5 @@ module.exports = {
     createTire,
     updateTire,
     deleteTire,
-
-
-}
+    searchTires, // Export the new function
+};

@@ -31,6 +31,8 @@ export const handleTires = () => {
             }
             else if (e.target.classList.contains("editButton")) {
                 message.textContent = "";
+                greeting.textContent = null; // Sets the greeting to null
+
                 showAddEdit(e.target.dataset.id);
             } else if (e.target.classList.contains("deleteButton")) {
                 message.textContent = "";
