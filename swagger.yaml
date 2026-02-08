@@ -52,10 +52,10 @@ paths:
                 - $ref: "#/components/schemas/LoginUserRequest"
                 - example:
                     email: bob@gmail.com
-                    password: secret
+                    password: password
             example:
               email: bob@gmail.com
-              password: secret
+              password: password
         required: true
       responses:
         "200":
@@ -198,7 +198,7 @@ components:
       example:
         name: bob
         email: bob@gmail.com
-        password: secret
+        password: password
     LoginUserRequest:
       title: LoginUserRequest
       required:
@@ -212,7 +212,7 @@ components:
           type: string
       example:
         email: bob@gmail.com
-        password: secret
+        password: password
     CreateTireRequest:
       title: CreateTireRequest
       required:

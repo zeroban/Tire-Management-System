@@ -9,16 +9,17 @@
 
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="index.css">
-    <title>Inventory List</title>
-
-
     <title>Inventory List</title>
 </head>
 
 <body>
+    <!-- <button id="toggleDarkMode">Dark Mode</button> -->
     <h1>Quick Tires Inventory </h1>
+        <a href="/api-docs" target="_blank" class="api-button">
+        API Docs
+    </a>
     <p id="greeting"></p>
+
 
     <div id="logon-register" style="display:none;">
         <button type="button" id="logon">Login</button>
@@ -125,11 +126,21 @@
             <button type="button" id="edit-cancel">Cancel</button>
         </form>
 
+
+        <div id="search-results"></div>
+
+
+
+
     </div>
     <p id="message"></p>
-    <script src="./index.js" type="module"></script>
-    <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/@bufferhead/nightowl@0.0.14/dist/nightowl.js"></script> -->
+
+
 
 </body>
+<script src="./index.js" type="module"></script>
+<!-- <script type="module" src="https://cdn.jsdelivr.net/npm/@bufferhead/nightowl@0.0.14/dist/nightowl.js" defer></script> -->
+
+
 
 </html>
