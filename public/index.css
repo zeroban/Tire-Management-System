@@ -7,6 +7,33 @@ body {
   position: relative;
 }
 
+
+.api-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #bed1e6;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.8s ease;
+}
+
+.api-button:hover {
+  background-color: #007bff;
+}
+
+body .mainlogo {
+  width: 10%;
+  height: 10%;
+  position: fixed;
+  left: 10px;
+  top: 5px;
+
+}
+
 h1 {
   position: relative;
   margin-top: 5%;
@@ -79,6 +106,24 @@ button:hover {
   background-color: #c82333;
   transform: scale(1.1);
 }
+
+#pagination{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+#add-tire{
+  position: absolute;
+  top: 90%;
+  right: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 
 #greeting {
   float: left;
